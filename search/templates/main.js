@@ -13,7 +13,7 @@ function nhdSearch() {
     markersLayer.clearLayers();
 
     // Clear table of rivers
-    $('#river-list tr').not(':first').remove()
+    $('#river-list tr').not(':first').remove();
 
     // Add a marker for the searched on lat lon
     markersLayer.addLayer(L.marker([lat, lon]));
@@ -42,7 +42,7 @@ function nhdSearch() {
                     .append($('<td>')
                       .text(value.meters)
                     )
-                  )
+                  );
             });
         }
         // Zoom map to fit all added geo objects
