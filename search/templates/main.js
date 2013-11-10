@@ -1,10 +1,8 @@
-$(document).ready(function(){
-    var map = L.mapbox.map('map', '{{ MAPBOX_MAP_ID }}')
-        .setView([38.754, -97.734], 4);
+var map = L.mapbox.map('map', '{{ MAPBOX_MAP_ID }}')
+    .setView([38.754, -97.734], 4);
 
-    // Layer to hold our geo objects
-    var markersLayer = L.geoJson().addTo(map);
-});
+// Layer to hold our geo objects
+var markersLayer = L.geoJson().addTo(map);
 
 function nhdSearch() {
     var lat = document.getElementById('latitude').value;
