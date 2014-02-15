@@ -53,6 +53,11 @@ function nhdSearch(in_lat, in_lon, in_name) {
         var url_name = encodeURIComponent(name);
         var new_url = '?lat=' + url_lat +'&lon=' + url_lon +'&name=' + url_name
         window.history.pushState({lat: lat, lon: lon, name: name}, '', new_url);
+
+        // Update our search fields to reflect search parameters
+        document.getElementById('latitude').setAttribute("value", lat);
+        document.getElementById('longitude').setAttribute("value", lon);
+        document.getElementById('name').setAttribute("value", name);
     });
 }
 
