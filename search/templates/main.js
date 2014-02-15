@@ -42,6 +42,8 @@ function nhdSearch(in_lat, in_lon, in_name) {
                       .text(value.meters)
                     )
                   );
+                // Show the river list table, if it's not visible already
+                $('#river-list').show();
             });
         }
         // Zoom map to fit all added geo objects
