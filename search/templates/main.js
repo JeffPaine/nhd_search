@@ -1,13 +1,7 @@
-var map = L.mapbox.map('map', '{{ MAPBOX_MAP_ID }}')
-    .setView([38.754, -97.734], 4);
-
-// Layer to hold our geo objects
-var markersLayer = L.geoJson().addTo(map);
-
-function nhdSearch() {
-    var lat = document.getElementById('latitude').value;
-    var lon = document.getElementById('longitude').value;
-    var name = document.getElementById('name').value;
+function nhdSearch(in_lat, in_lon, in_name) {
+    var lat = in_lat || document.getElementById('latitude').value;
+    var lon = in_lon || document.getElementById('longitude').value;
+    var name = in_name || document.getElementById('name').value;
 
     // Clear any existing geo objects from map
     markersLayer.clearLayers();
@@ -47,5 +41,46 @@ function nhdSearch() {
         }
         // Zoom map to fit all added geo objects
         map.fitBounds(markersLayer.getBounds());
+
+        // Update our url to reflect the search performed
+        var url_lat = encodeURIComponent(lat);
+        var url_lon = encodeURIComponent(lon);
+        var url_name = encodeURIComponent(name);
+        var new_url = '?lat=' + url_lat +'&lon=' + url_lon +'&name=' + url_name
+        window.history.pushState({lat: lat, lon: lon, name: name}, '', new_url);
     });
 }
+
+// More info: http://css-tricks.com/snippets/javascript/get-url-variables/
+// Added decodeURIComponent() to function from above url
+function getQueryVariable(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return decodeURIComponent(pair[1]);}
+       }
+       return(false);
+}
+
+// Check the url and see if there are any search parameters present.
+// If lat and lon are present, do a search.
+function checkForSearchParameters() {
+    var lat = getQueryVariable('lat');
+    var lon = getQueryVariable('lon');
+    var name = getQueryVariable('name');
+    // If at least lat and lon are present, do a search
+    if (lat && lon) {
+        nhdSearch(lat, lon, name);
+    };
+}
+
+// Create our map
+var map = L.mapbox.map('map', '{{ MAPBOX_MAP_ID }}')
+    .setView([38.754, -97.734], 4);
+
+// Create a layer to hold our geo objects
+var markersLayer = L.geoJson().addTo(map);
+
+// If our url has search parameters, perform that search
+checkForSearchParameters();
