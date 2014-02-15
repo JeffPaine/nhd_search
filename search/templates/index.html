@@ -39,16 +39,16 @@
       <div class="nhd_search">
         <form class="form-inline" role="form">
           <div class="form-group">
-            <label class="sr-only" for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
-          </div>
-          <div class="form-group">
             <label class="sr-only" for="latitude">Latitude</label>
             <input type="number" class="form-control" id="latitude" placeholder="Latitude" min="-180" max="180" step="any">
           </div>
           <div class="form-group">
             <label class="sr-only" for="longitude">Longitude</label>
             <input type="number" class="form-control" id="longitude" placeholder="Longitude" min="-180" max="180" step="any">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name (optional)">
           </div>
           <a href="javascript:void(0)" class="btn btn-default" onclick="nhdSearch()">Search</a> (<a href="javascript:void(0)" onclick="nhdSearch(35.283, -82.3582, 'Green River')">example</a>)
         </form>
