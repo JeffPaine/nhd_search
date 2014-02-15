@@ -60,9 +60,7 @@ WSGI_APPLICATION = 'nhd_search.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config()
-}
+DATABASES = {}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -88,4 +86,26 @@ STATIC_URL = '/static/'
 MAPBOX_MAP_ID = os.environ.get('MAPBOX_MAP_ID')
 TEMPLATE_CONTEXT_PROCESSORS += (
     'search.context_processors.add_mapbox_map_id',
+)
+
+
+########## dj-database-url and dj-static
+# https://devcenter.heroku.com/articles/getting-started-with-django#django-settings
+# Parse database configuration from $DATABASE_URL
+DATABASES['default'] = dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
 )
