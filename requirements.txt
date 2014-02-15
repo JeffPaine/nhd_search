@@ -3,5 +3,10 @@ git+git://github.com/seatgeek/fuzzywuzzy.git@3471ee60c8cafe98f5e2fcc6fcdef5fa410
 
 Django==1.6.2
 dj-database-url==0.2.2
+dj-static==0.0.5
+fuzzywuzzy==0.2.1
+gunicorn==18.0
 postgres==2.1.2
 psycopg2==2.5.2
+pystache==0.5.3
+static==1.0.2
