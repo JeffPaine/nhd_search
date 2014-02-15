@@ -2,7 +2,7 @@ import json
 
 from django.http import HttpResponse
 
-import utils
+from . import utils
 
 
 def search(request):
