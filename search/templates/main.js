@@ -3,6 +3,11 @@ function nhdSearch(in_lat, in_lon, in_name) {
     var lon = in_lon || document.getElementById('longitude').value;
     var name = in_name || document.getElementById('name').value;
 
+    // Only continue of both lat and lon are present
+    if (!(lat && lon)) {
+        return false;
+    };
+
     // Clear any existing geo objects from map
     markersLayer.clearLayers();
 
