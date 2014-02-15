@@ -40,3 +40,6 @@ nosetests.xml
 
 # development environment variables
 .env
+
+# static files
+staticfiles
