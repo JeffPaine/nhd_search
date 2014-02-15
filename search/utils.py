@@ -54,7 +54,5 @@ def search_nhd(name, lat, lon, limit=10):
         if name and r['gnis_name']:
             # Calculate name similarity of the search name and river name
             r['name_similarity'] = fuzz.WRatio(name, r['gnis_name'])
-        else:
-            r['gnis_name'] = None
 
     return sorted(rivers, key=operator.itemgetter('meters'))[:limit]
