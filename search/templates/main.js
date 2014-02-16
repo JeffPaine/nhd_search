@@ -24,8 +24,19 @@ function nhdSearch(in_lat, in_lon, in_name) {
                 // Add the returned rivers geo data to the map
                 var river = L.geoJson(value.geojson);
 
+                if (value.gnis_id) {
+                    var gnis_link = '<a href="http://geonames.usgs.gov/apex/f?p=gnispq:3:::NO::P3_FID:' + value.gnis_id + '">' + value.gnis_id + '</a>'
+                } else {
+                    var gnis_link = null
+                }
+
+                var popupHtml = '<h3>' + value.gnis_name + '</h3>' +
+                                '<p>' +
+                                '<code>gnis_id</code>: ' + gnis_link + '<br>' +
+                                '</p>';
+
                 // Add a popup to the river
-                river.bindPopup(value.gnis_name);
+                river.bindPopup(popupHtml);
 
                 // Add a on-hover type label to the river
                 river.bindLabel(value.gnis_name).addTo(map);
