@@ -1,6 +1,6 @@
 function nhdSearch(in_lat, in_lon, in_name) {
-    var lat = in_lat || document.getElementById('latitude').value;
-    var lon = in_lon || document.getElementById('longitude').value;
+    var lat = in_lat || document.getElementById('lat').value;
+    var lon = in_lon || document.getElementById('lon').value;
     var name = in_name || document.getElementById('name').value;
 
     // Only continue of both lat and lon are present
@@ -60,8 +60,8 @@ function nhdSearch(in_lat, in_lon, in_name) {
         window.history.pushState({lat: lat, lon: lon, name: name}, '', new_url);
 
         // Update our search fields to reflect search parameters
-        document.getElementById('latitude').setAttribute("value", lat);
-        document.getElementById('longitude').setAttribute("value", lon);
+        document.getElementById('lat').setAttribute("value", lat);
+        document.getElementById('lon').setAttribute("value", lon);
         document.getElementById('name').setAttribute("value", name);
     });
 }
