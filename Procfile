@@ -1,1 +1,1 @@
-web: gunicorn nhd_search.wsgi
+web: newrelic-admin run-program gunicorn nhd_search.wsgi
