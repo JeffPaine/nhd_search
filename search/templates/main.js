@@ -27,6 +27,9 @@ function nhdSearch(in_lat, in_lon, in_name) {
                 // Add a popup to the river
                 river.bindPopup(value.gnis_name);
 
+                // Add a on-hover type label to the river
+                river.bindLabel(value.gnis_name).addTo(map);
+
                 markersLayer.addLayer(river);
 
                 // Add the river data to the table
