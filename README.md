@@ -8,4 +8,4 @@ This interface should be especially helpful for those looking to match existing 
 
 ## Status
 
-Beta / work in progress. Only flowlines (streams, rivers, etc.) supported at this time.
+Alpha / work in progress. Only flowlines (streams, rivers, etc.) supported at this time.
