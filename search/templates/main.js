@@ -91,6 +91,9 @@ function checkForSearchParameters() {
 var map = L.mapbox.map('map', '{{ MAPBOX_MAP_ID }}')
     .setView([38.754, -97.734], 4);
 
+// Add fullscreen control to map
+L.control.fullscreen().addTo(map);
+
 // Create a layer to hold our geo objects
 var markersLayer = L.geoJson().addTo(map);
 
