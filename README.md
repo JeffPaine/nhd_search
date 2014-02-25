@@ -1,6 +1,6 @@
 # nhd_search
 
-A web interface to search the [National Hydrography Dataset (NHD)](http://nhd.usgs.gov/) - a database of nearly every lake, pond, stream, river, canal, dam and stream gage in the United States.
+A web interface to search the [National Hydrography Dataset (NHD)](http://nhd.usgs.gov/) - a database of nearly every lake, pond, stream, river, canal, dam and stream gauge in the United States.
 
 ![nhd_river_search-2](https://f.cloud.github.com/assets/1269165/2181494/584b3822-9753-11e3-8fdb-771750897bc0.png)
 
