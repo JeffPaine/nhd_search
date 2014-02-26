@@ -6,7 +6,7 @@ function nhdSearch(in_lat, in_lon, in_name) {
     // Only continue of both lat and lon are present
     if (!(lat && lon)) {
         return false;
-    };
+    }
 
     // Clear any existing geo objects from map
     markersLayer.clearLayers();
@@ -24,10 +24,12 @@ function nhdSearch(in_lat, in_lon, in_name) {
                 // Add the returned rivers geo data to the map
                 var river = L.geoJson(value.geojson);
 
+                var gnis_link = '';
+
                 if (value.gnis_id) {
-                    var gnis_link = '<a href="http://geonames.usgs.gov/apex/f?p=gnispq:3:::NO::P3_FID:' + value.gnis_id + '">' + value.gnis_id + '</a>'
+                    gnis_link = '<a href="http://geonames.usgs.gov/apex/f?p=gnispq:3:::NO::P3_FID:' + value.gnis_id + '">' + value.gnis_id + '</a>';
                 } else {
-                    var gnis_link = null
+                    gnis_link = null;
                 }
 
                 var popupHtml = '<h3>' + value.gnis_name + '</h3>' +
@@ -67,7 +69,7 @@ function nhdSearch(in_lat, in_lon, in_name) {
         var url_lat = encodeURIComponent(lat);
         var url_lon = encodeURIComponent(lon);
         var url_name = encodeURIComponent(name);
-        var new_url = '?lat=' + url_lat +'&lon=' + url_lon +'&name=' + url_name
+        var new_url = '?lat=' + url_lat +'&lon=' + url_lon +'&name=' + url_name;
         window.history.pushState({lat: lat, lon: lon, name: name}, '', new_url);
 
         // Update our search fields to reflect search parameters
@@ -98,7 +100,7 @@ function checkForSearchParameters() {
     // If at least lat and lon are present, do a search
     if (lat && lon) {
         nhdSearch(lat, lon, name);
-    };
+    }
 }
 
 // Create our map
